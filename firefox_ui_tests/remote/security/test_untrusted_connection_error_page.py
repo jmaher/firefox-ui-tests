@@ -33,4 +33,3 @@ class TestUntrustedConnectionErrorPage(FirefoxTestCase):
             button.click()
             self.wait_for_condition(
                 lambda mn: self.browser.default_homepage in mn.get_url())
-
