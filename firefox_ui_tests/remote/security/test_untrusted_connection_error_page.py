@@ -26,8 +26,6 @@ class TestUntrustedConnectionErrorPage(FirefoxTestCase):
             # Wait for the DOM to receive events
             time.sleep(1)
 
-            button = self.marionette.find_element(
-                By.ID, "getMeOutOfHereButton")
-            self.assertTrue(button.is_displayed())
+            button = self.marionette.find_element(By.ID, "getMeOutOfHereButton")
             button.click()
             self.wait_for_condition(lambda mn: self.browser.default_homepage in mn.get_url())
