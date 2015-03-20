@@ -58,3 +58,7 @@ class TestSecurityNotification(FirefoxTestCase):
 
             # Verify the error code is correct
             self.assertIn('sec_error_expired_certificate', text.get_attribute('textContent'))
+
+        # Future tests that run after this fail to .navigate()
+        with self.marionette.using_context('content'):
+            self.marionette.navigate(self.urls[1])

@@ -16,9 +16,6 @@ class TestUntrustedConnectionErrorPage(FirefoxTestCase):
 
         self.url = 'https://ssl-selfsigned.mozqa.com'
 
-    def tearDown(self):
-        FirefoxTestCase.tearDown(self)
-
     def test_untrusted_connection_error_page(self):
         # In some localized builds, the default page redirects
         target_url = self.browser.get_final_url(self.browser.default_homepage)
@@ -31,4 +28,4 @@ class TestUntrustedConnectionErrorPage(FirefoxTestCase):
 
             button = self.marionette.find_element(By.ID, "getMeOutOfHereButton")
             button.click()
-            Wait(lambda mn: target_url == mn.get_url())
+            Wait(self.marionette).until(lambda mn: target_url == self.marionette.get_url())
